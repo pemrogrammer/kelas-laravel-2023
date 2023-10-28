@@ -24,16 +24,16 @@ class MahasiswaController extends Controller
         if($request->password !== $request->confirm_password){
             return redirect()->back()->withErrors('Konfirmasi Password harus sama');
         }
-
+        // dd($request->id_number);
         Users::create([
             'fullname' => $request->fullname,
             'id_number' => $request->id_number,
             'password' => Hash::make($request->password),
             'role' => $request->role
         ]);
-
-        return redirect('/login');
-
+        return redirect('/auth/login');
     }
+
+
 
 }

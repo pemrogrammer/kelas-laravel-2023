@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Users extends Model
+class User extends Authenticatable  
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens, Notifiable; 
 
     protected $table = 'users';
 
@@ -17,4 +20,6 @@ class Users extends Model
         'role',
         'password'
     ];
+
+    // protected $guards = ['id_number'];
 }
